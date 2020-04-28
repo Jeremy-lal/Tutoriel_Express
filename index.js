@@ -13,7 +13,6 @@ app.post('/movies', (req, res) => {
 
   connection.query('INSERT INTO movies SET ?', bodyData, (err, results) => {
     if (err) {
-      console.log(err);
       res.status(500).send("Erreur de sauvegarde de film");
     } else {
       res.sendStatus(201);
@@ -26,7 +25,6 @@ app.post('/movies', (req, res) => {
 
   connection.query('SELECT * FROM movies WHERE category = ? LIMIT ?', [category, limit], (err, results) => {
     if (err) {
-      console.log(err);
       res.status(500).send("Erreur lors de la récupération de film");
     } else {
       res.send(results);
