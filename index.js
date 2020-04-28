@@ -1,14 +1,13 @@
 const express = require('express');
-const app = express();
-const port = 3002;
-
 const connection = require('./mysql')
 const bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
 
+const app = express();
+const port = 3002;
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true ));
+
+                               
 app.post('/movies', (req, res) => {
   const bodyData = req.body;
 
@@ -17,7 +16,7 @@ app.post('/movies', (req, res) => {
       console.log(err);
       res.status(500).send("Erreur de sauvegarde de film");
     } else {
-      res.sendStatus(200);
+      res.sendStatus(201);
     }
   });
 });
