@@ -2,9 +2,18 @@ const express = require('express');
 const app = express();
 const port = 3002;
 
-app.get('/', (request, response) => {
-  response.send('Bienvenue sur Express');
+const connection = require('./mysql')
+
+app.get('/films', (req, res) => {
+  connection.query('SELECT * from movies;', (err, results) => {
+    if (err) {
+      res.status(500).send('Erreur lors de la récupération des films');
+    } else {
+      res.json(results);
+    }
+  });
 });
+
 
 app.listen(port, (err) => {
   if (err) {
