@@ -1,21 +1,26 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const app = express();
 const port = 3002;
-const series = require('./routes/series');
-const films = require('./routes/films');
+import { MovieController } from './src/controllers/movies.controller';
+import { SerieController } from './src/controllers/series.controller';
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true }));
+async function startServer() {
+  const app = express();
+  
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({extended: true }));
 
-app.use('/series', series);
-app.use('/films', films);
+  MovieController(app);
+  SerieController(app);
 
 
-app.listen(port, (err) => {
-  if (err) {
-    throw new Error('Something bad happened...');
-  }
+  app.listen(port, (err) => {
+    if (err) {
+      throw new Error('Something bad happened...');
+    }
+    console.log(`Server is listening on ${port}`);
+  });
+  
+}
 
-  console.log(`Server is listening on ${port}`);
-});
+startServer();
