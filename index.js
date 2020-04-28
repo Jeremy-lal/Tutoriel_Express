@@ -8,10 +8,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true ));
 
                                
-app.post('/films', (req, res) => {
+app.post('/movies', (req, res) => {
   const bodyData = req.body;
 
-  connection.query('INSERT INTO employee SET ?', bodyData, (err, results) => {
+  connection.query('INSERT INTO movies SET ?', bodyData, (err, results) => {
     if (err) {
       console.log(err);
       res.status(500).send("Erreur de sauvegarde de film");
@@ -21,7 +21,7 @@ app.post('/films', (req, res) => {
   });
 });
 
-app.post('/films', (req, res) => {
+app.post('/movies', (req, res) => {
   const {category, limit} = req.body;
 
   connection.query('SELECT * FROM movies WHERE category = ? LIMIT ?', [category, limit], (err, results) => {
