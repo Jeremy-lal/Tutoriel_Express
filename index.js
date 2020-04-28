@@ -13,7 +13,7 @@ app.delete('/films/:id', (req, res) => {
 
   connection.query('DELETE FROM movies WHERE id = ?', [id], err => {
     if (err) {
-      res.status(500).send("Erreur lors de la suppression d'un employé");
+      res.status(500).send("Erreur lors de la suppression d'un film");
     } else {
       res.sendStatus(200);
     }
