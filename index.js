@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true ));
 
                                
-app.post('/movies', (req, res) => {
+app.post('/films', (req, res) => {
   const bodyData = req.body;
 
   connection.query('INSERT INTO employee SET ?', bodyData, (err, results) => {
@@ -21,7 +21,7 @@ app.post('/movies', (req, res) => {
   });
 });
 
-app.post('/movies', (req, res) => {
+app.post('/films', (req, res) => {
   const {category, limit} = req.body;
 
   connection.query('SELECT * FROM movies WHERE category = ? LIMIT ?', [category, limit], (err, results) => {
