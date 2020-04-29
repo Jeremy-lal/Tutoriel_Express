@@ -1,10 +1,10 @@
 import { UserRepository } from '../repositories/user.repository';
 import { TokenService } from './token.services';
-import { User } from 'src/models/user';
+import { User } from '../models/user';
 import { sign } from 'jsonwebtoken';
 import { hash, verify } from 'argon2';
 import { randomBytes } from 'crypto';
-import { Token } from 'src/models/token';
+import { Token } from '../models/token';
 
 export class AuthService {
     private repository: UserRepository;
