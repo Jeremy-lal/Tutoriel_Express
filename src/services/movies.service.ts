@@ -1,7 +1,8 @@
+import { Movie } from './../models/movie';
 import { MovieRepository } from '../repositories/movie.repository';
 
 export class MovieService {
-    repository;
+    private repository: MovieRepository;
 
     constructor() {
         this.repository = new MovieRepository();
@@ -11,15 +12,15 @@ export class MovieService {
         return await this.repository.getAll();
     }
 
-    async saveMovie(movie) {
+    async saveMovie(movie: Movie) {
         return await this.repository.save(movie);
     }
 
-    async updateMovie(movie, id) {
+    async updateMovie(movie: Movie, id: number) {
         return await this.repository.update(movie, id);
     }
 
-    async deleteMovie(id) {
+    async deleteMovie(id: number) {
         return await this.repository.delete(id);
     }
 
