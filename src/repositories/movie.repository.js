@@ -14,12 +14,12 @@ export class MovieRepository {
         return result;
     }
 
-    async save(user) {
+    async save(movie) {
         const postUser = await connection.query(this.POST_MOVIE, user);
         return postUser;
     }
 
-    async update(user, id) {
+    async update(movie, id) {
         const updateMovie = await connection.query(this.UPDATE_MOVIE, [user, id]);
         return updateMovie;
     }
