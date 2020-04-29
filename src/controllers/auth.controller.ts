@@ -29,4 +29,6 @@ export const AuthController = (app: Application) => {
             res.status(400).send('L\'email ou le mot de passe est erroné');
           }
       });
+    
+    app.use('/auth', authRouter);
 }
