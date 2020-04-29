@@ -1,3 +1,4 @@
+import { AuthController } from './controllers/auth.controller';
 import { MovieController } from './controllers/movies.controller';
 import { SerieController } from './controllers/series.controller';
 import express from 'express';
@@ -11,6 +12,7 @@ async function startServer() {
 
   MovieController(app);
   SerieController(app);
+  AuthController(app);
 
 
   app.listen(port, (err: Error) => {
