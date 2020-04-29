@@ -1,8 +1,8 @@
-import { MovieController } from './src/controllers/movies.controller';
-import { SerieController } from './src/controllers/series.controller';
+import { MovieController } from './controllers/movies.controller';
+import { SerieController } from './controllers/series.controller';
 const express = require('express');
 const bodyParser = require('body-parser');
-const loaders = require('./src/loaders/express')
+const loaders = require('./loaders/express')
 const port = 3002;
 
 async function startServer() {
@@ -24,3 +24,4 @@ async function startServer() {
 }
 
 startServer();
+  
