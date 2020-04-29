@@ -19,7 +19,7 @@ export const AuthController = (app: Application) => {
 
     authRouter.post('/signin', async (req: Request, res: Response) => {
         const {identifiant, pwd}= req.body;
-        
+
         try {
           const { token, user } = await authService.signIn(identifiant, pwd);
           res.set('access-control-expose-headers', 'JWT_TOKEN');
@@ -29,4 +29,6 @@ export const AuthController = (app: Application) => {
             res.status(400).send('L\'email ou le mot de passe est erroné');
           }
       });
+    
+    app.use('/auth', authRouter);
 }
