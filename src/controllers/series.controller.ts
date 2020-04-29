@@ -40,7 +40,7 @@ export const SerieController = (app: Application) => {
 
 
     serieRouter.delete('/:id', async (req: Request, res: Response) => {
-        const id = req.params.id;
+        const id = parseInt(req.params.id, 10);
 
         try {
             await serieService.deleteSerie(id);
