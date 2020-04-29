@@ -43,7 +43,7 @@ export const SerieController = (app) => {
         const id = req.params.id;
 
         try {
-            await serieService.deleteserie(id);
+            await serieService.deleteSerie(id);
             res.sendStatus(200);
         } catch (error) {
             res.status(500).send('Erreur lors de la suppression d\'une série');
