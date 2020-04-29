@@ -1,4 +1,4 @@
-import * as  connection from '../../mysql';
+import * as  connection from '../loaders/mysql';
 
 export class MovieRepository {
 
