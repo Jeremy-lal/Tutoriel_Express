@@ -1,13 +1,13 @@
 import { MovieService } from '../services/movies.service';
-const express = require('express');
+import express, { Application, Request, Response, Router } from 'express';
 
-export const MovieController = (app) => {
-    
+export const MovieController = (app: Application) => {
+
     const movieService = new MovieService();
-    const movieRouter = express.Router();
+    const movieRouter: Router = express.Router();
 
 
-    movieRouter.get('/', (req, res) => {
+    movieRouter.get('/', async (req: Request, res: Response) => {
         try {
             const result = await movieService.getAll();
             res.send(result);
@@ -16,7 +16,7 @@ export const MovieController = (app) => {
         }
     });
 
-    movieRouter.post('/', (req, res) => {
+    movieRouter.post('/', async (req: Request, res: Response) => {
         const movie = req.body;
 
         try {
@@ -27,7 +27,7 @@ export const MovieController = (app) => {
         }
     });
 
-    movieRouter.put('/', (req, res) => {
+    movieRouter.put('/', async (req: Request, res: Response) => {
         const movie = req.body;
 
         try {
@@ -39,7 +39,7 @@ export const MovieController = (app) => {
     });
 
 
-    movieRouter.delete('/:id', (req, res) => {
+    movieRouter.delete('/:id', async (req: Request, res: Response) => {
         const id = req.params.id;
 
         try {

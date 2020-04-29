@@ -1,13 +1,13 @@
 import { SerieService } from '../services/series.service';
-const express = require('express');
+import express, { Application, Request, Response, Router } from 'express';
 
-export const SerieController = (app) => {
-    
+export const SerieController = (app: Application) => {
+
     const serieService = new SerieService();
-    const serieRouter = express.Router();
+    const serieRouter: Router = express.Router();
 
 
-    serieRouter.get('/', (req, res) => {
+    serieRouter.get('/', async (req: Request, res: Response) => {
         try {
             const result = await serieService.getAll();
             res.send(result);
@@ -16,7 +16,7 @@ export const SerieController = (app) => {
         }
     });
 
-    serieRouter.post('/', (req, res) => {
+    serieRouter.post('/', async (req: Request, res: Response) => {
         const serie = req.body;
 
         try {
@@ -27,7 +27,7 @@ export const SerieController = (app) => {
         }
     });
 
-    serieRouter.put('/', (req, res) => {
+    serieRouter.put('/', async (req: Request, res: Response) => {
         const serie = req.body;
 
         try {
@@ -39,11 +39,11 @@ export const SerieController = (app) => {
     });
 
 
-    serieRouter.delete('/:id', (req, res) => {
+    serieRouter.delete('/:id', async (req: Request, res: Response) => {
         const id = req.params.id;
 
         try {
-            await serieService.deleteserie(id);
+            await serieService.deleteSerie(id);
             res.sendStatus(200);
         } catch (error) {
             res.status(500).send('Erreur lors de la suppression d\'une série');
