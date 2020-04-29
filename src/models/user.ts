@@ -1,9 +1,9 @@
 export class User {
-    private id!: number;
-    private firstname!: string;
-    private lastname!: string;
-    private identifiant!: string;
-    private pwd!: string;
+    public id!: number;
+    public firstname!: string;
+    public lastname!: string;
+    public identifiant!: string;
+    public pwd!: string;
 
     constructor(input: User) {
         Object.assign(this, input);
