@@ -5,7 +5,7 @@ const port = 3002;
 const connection = require('./mysql')
 
 // app.get('/movies', (req, res) => {
-//   connection.query('SELECT * from movies;', (err, results) => {
+//   connection.query('SELECT * from movie;', (err, results) => {
 //     if (err) {
 //       res.status(500).send('Erreur lors de la récupération des films');
 //     } else {
@@ -17,7 +17,7 @@ const connection = require('./mysql')
 app.get('/movies/:id', (req, res) => {
   const id = parseInt(req.params.id, 10);
 
-  connection.query('SELECT * from movies WHERE id = ?', [id], (err, results) => {
+  connection.query('SELECT * from movie WHERE id = ?', [id], (err, results) => {
     if (err) {
       res.status(500).send('Erreur lors de la récupération du film');
     } else if (results.length === 0) {
@@ -29,7 +29,7 @@ app.get('/movies/:id', (req, res) => {
 });
 
 app.get('/movies', (req, res) => {
-  let request = 'SELECT * FROM movies';
+  let request = 'SELECT * FROM movie';
   const querysValues = [];
   if (req.query.category) {
     request += ' WHERE category = ?';
