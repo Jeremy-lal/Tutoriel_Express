@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended: true }));
 
 
 app.get('/movies', (req, res) => {
-  connection.query('SELECT * from movies;', (err, results) => {
+  connection.query('SELECT * from movie;', (err, results) => {
     if (err) {
       res.status(500).send('Erreur lors de la récupération des films');
     } else {
@@ -21,7 +21,7 @@ app.get('/movies', (req, res) => {
 app.delete('/movies/:id', (req, res) => {
   const id = req.params.id;
 
-  connection.query('DELETE FROM movies WHERE id = ?', [id], err => {
+  connection.query('DELETE FROM movie WHERE id = ?', [id], err => {
     if (err) {
       res.status(500).send("Erreur lors de la suppression d'un film");
     } else {
