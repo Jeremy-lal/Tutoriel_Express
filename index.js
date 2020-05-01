@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: true }));
 
 
 app.get('/movies', (req, res) => {
-  connection.query('SELECT * from movies;', (err, results) => {
+  connection.query('SELECT * from movie;', (err, results) => {
     if (err) {
       res.status(500).send('Erreur lors de la récupération des films');
     } else {
@@ -22,7 +22,7 @@ app.get('/movies', (req, res) => {
 app.put('/movies', (req, res) => {
   const bodyData = req.body;
 
-  connection.query('UPDATE movies SET ? WHERE id = ?', [bodyData, bodyData.id], err => {
+  connection.query('UPDATE movie SET ? WHERE id = ?', [bodyData, bodyData.id], err => {
     if (err) {
       res.status(500).send("Erreur de mise à jour d'un film");
     } else {
@@ -35,7 +35,7 @@ app.put('/movies/:id', (req, res) => {
   const id = parseInt(req.params.id)
   const bodyData = req.body;
 
-  connection.query('UPDATE movies SET ? WHERE id = ?', [bodyData, id], err => {
+  connection.query('UPDATE movie SET ? WHERE id = ?', [bodyData, id], err => {
     if (err) {
       res.status(500).send("Erreur de mise à jour d'un film");
     } else {
