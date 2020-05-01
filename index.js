@@ -8,7 +8,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true }));
 
 
-app.delete('/films/:id', (req, res) => {
+app.get('/movies', (req, res) => {
+  connection.query('SELECT * from movies;', (err, results) => {
+    if (err) {
+      res.status(500).send('Erreur lors de la récupération des films');
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+app.delete('/movies/:id', (req, res) => {
   const id = req.params.id;
 
   connection.query('DELETE FROM movies WHERE id = ?', [id], err => {
