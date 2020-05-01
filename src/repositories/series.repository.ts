@@ -1,5 +1,5 @@
-import { DbHandler } from './../core/db.handler';
-import { Serie } from './../models/serie';
+import { DbHandler } from '../core/db.handler';
+import { Serie } from '../models/serie';
 
 export class SerieRepository {
 
