@@ -5,7 +5,7 @@ const port = 3002;
 const connection = require('./mysql')
 
 app.get('/movies', (req, res) => {
-  connection.query('SELECT * from movies;', (err, results) => {
+  connection.query('SELECT * from movie;', (err, results) => {
     if (err) {
       res.status(500).send('Erreur lors de la récupération des films');
     } else {
