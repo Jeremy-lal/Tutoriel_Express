@@ -1,4 +1,4 @@
-import { DbHandler } from './../core/db.handler';
+import { DbHandler } from '../core/db.handler';
 import { Serie } from '../models/series';
 
 export class SerieRepository {

@@ -1,5 +1,5 @@
 import { Serie } from '../models/series';
-import { SerieRepository } from '../repositories/serie.repository';
+import { SerieRepository } from '../repositories/series.repository';
 
 export class SerieService {
     private repository: SerieRepository;
