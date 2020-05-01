@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended: true }));
 
 
 // app.get('/movies', (req, res) => {
-//   connection.query('SELECT * from movies;', (err, results) => {
+//   connection.query('SELECT * from movie;', (err, results) => {
 //     if (err) {
 //       res.status(500).send('Erreur lors de la récupération des films');
 //     } else {
@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({extended: true }));
 app.get('/movies/:id', (req, res) => {
   const id = parseInt(req.params.id, 10);
 
-  connection.query('SELECT * from movies WHERE id = ?', [id], (err, results) => {
+  connection.query('SELECT * from movie WHERE id = ?', [id], (err, results) => {
     if (err) {
       res.status(500).send('Erreur lors de la récupération du film');
     } else if (results.length === 0) {
@@ -33,7 +33,7 @@ app.get('/movies/:id', (req, res) => {
 });
 
 app.get('/movies', (req, res) => {
-  let request = 'SELECT * FROM movies';
+  let request = 'SELECT * FROM movie';
   const querysValues = [];
   if (req.query.category) {
     request += ' WHERE category = ?';
@@ -52,7 +52,7 @@ app.get('/movies', (req, res) => {
 app.post('/movies', (req, res) => {
   const bodyData = req.body;
 
-  connection.query('INSERT INTO movies SET ?', bodyData, (err, results) => {
+  connection.query('INSERT INTO movie SET ?', bodyData, (err, results) => {
     if (err) {
       console.log(err);
       res.status(500).send("Erreur de sauvegarde de film");
@@ -65,7 +65,7 @@ app.post('/movies', (req, res) => {
 app.post('/movies/category', (req, res) => {
   const {category, limit} = req.body;
 
-  connection.query('SELECT * FROM movies WHERE category = ? LIMIT ?', [category, limit], (err, results) => {
+  connection.query('SELECT * FROM movie WHERE category = ? LIMIT ?', [category, limit], (err, results) => {
     if (err) {
       console.log(err);
       res.status(500).send("Erreur lors de la récupération de film");
@@ -78,7 +78,7 @@ app.post('/movies/category', (req, res) => {
 app.put('/movies', (req, res) => {
   const bodyData = req.body;
 
-  connection.query('UPDATE movies SET ? WHERE id = ?', [bodyData, bodyData.id], err => {
+  connection.query('UPDATE movie SET ? WHERE id = ?', [bodyData, bodyData.id], err => {
     if (err) {
       res.status(500).send("Erreur de mise à jour d'un film");
     } else {
@@ -91,7 +91,7 @@ app.put('/movies/:id', (req, res) => {
   const id = parseInt(req.params.id)
   const bodyData = req.body;
 
-  connection.query('UPDATE movies SET ? WHERE id = ?', [bodyData, id], err => {
+  connection.query('UPDATE movie SET ? WHERE id = ?', [bodyData, id], err => {
     if (err) {
       res.status(500).send("Erreur de mise à jour d'un film");
     } else {
@@ -103,7 +103,7 @@ app.put('/movies/:id', (req, res) => {
 app.delete('/movies/:id', (req, res) => {
   const id = req.params.id;
 
-  connection.query('DELETE FROM movies WHERE id = ?', [id], err => {
+  connection.query('DELETE FROM movie WHERE id = ?', [id], err => {
     if (err) {
       res.status(500).send("Erreur lors de la suppression d'un employé");
     } else {
