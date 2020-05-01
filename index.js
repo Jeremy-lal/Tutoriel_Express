@@ -8,17 +8,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true }));
 
 
-app.get('/films', (req, res) => {
-  connection.query('SELECT * from movies;', (err, results) => {
-    if (err) {
-      res.status(500).send('Erreur lors de la récupération des films');
-    } else {
-      res.json(results);
-    }
-  });
-});
+// app.get('/movies', (req, res) => {
+//   connection.query('SELECT * from movies;', (err, results) => {
+//     if (err) {
+//       res.status(500).send('Erreur lors de la récupération des films');
+//     } else {
+//       res.json(results);
+//     }
+//   });
+// });
 
-app.get('/films/:id', (req, res) => {
+app.get('/movies/:id', (req, res) => {
   const id = parseInt(req.params.id, 10);
 
   connection.query('SELECT * from movies WHERE id = ?', [id], (err, results) => {
@@ -32,7 +32,7 @@ app.get('/films/:id', (req, res) => {
   });
 });
 
-app.get('/films', (req, res) => {
+app.get('/movies', (req, res) => {
   let request = 'SELECT * FROM movies';
   const querysValues = [];
   if (req.query.category) {
@@ -40,7 +40,7 @@ app.get('/films', (req, res) => {
     querysValues.push(req.query.category);
   }
 
-  connection.query(sql, querysValues, (err, results) => {
+  connection.query(request, querysValues, (err, results) => {
     if (err) {
       res.status(500).send(`An error occurred: ${err.message}`);
     } else {
@@ -52,7 +52,7 @@ app.get('/films', (req, res) => {
 app.post('/movies', (req, res) => {
   const bodyData = req.body;
 
-  connection.query('INSERT INTO employee SET ?', bodyData, (err, results) => {
+  connection.query('INSERT INTO movies SET ?', bodyData, (err, results) => {
     if (err) {
       console.log(err);
       res.status(500).send("Erreur de sauvegarde de film");
@@ -62,7 +62,7 @@ app.post('/movies', (req, res) => {
   });
 });
 
-app.post('/movies', (req, res) => {
+app.post('/movies/category', (req, res) => {
   const {category, limit} = req.body;
 
   connection.query('SELECT * FROM movies WHERE category = ? LIMIT ?', [category, limit], (err, results) => {
@@ -75,10 +75,10 @@ app.post('/movies', (req, res) => {
   });
 });
 
-app.put('/films', (req, res) => {
+app.put('/movies', (req, res) => {
   const bodyData = req.body;
 
-  connection.query('UPDATE movies SET ? WHERE id = ?', [bodydata, bodydata.id], err => {
+  connection.query('UPDATE movies SET ? WHERE id = ?', [bodyData, bodyData.id], err => {
     if (err) {
       res.status(500).send("Erreur de mise à jour d'un film");
     } else {
@@ -87,11 +87,11 @@ app.put('/films', (req, res) => {
   });
 });
 
-app.put('/films/:id', (req, res) => {
+app.put('/movies/:id', (req, res) => {
   const id = parseInt(req.params.id)
   const bodyData = req.body;
 
-  connection.query('UPDATE movies SET ? WHERE id = ?', [bodydata, id], err => {
+  connection.query('UPDATE movies SET ? WHERE id = ?', [bodyData, id], err => {
     if (err) {
       res.status(500).send("Erreur de mise à jour d'un film");
     } else {
@@ -100,7 +100,7 @@ app.put('/films/:id', (req, res) => {
   });
 });
 
-app.delete('/films/:id', (req, res) => {
+app.delete('/movies/:id', (req, res) => {
   const id = req.params.id;
 
   connection.query('DELETE FROM movies WHERE id = ?', [id], err => {
