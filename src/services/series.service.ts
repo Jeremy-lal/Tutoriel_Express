@@ -1,4 +1,4 @@
-import { Serie } from './../models/serie';
+import { Serie } from '../models/series';
 import { SerieRepository } from '../repositories/serie.repository';
 
 export class SerieService {
