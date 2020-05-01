@@ -21,7 +21,7 @@ export const SerieController = (app: Application) => {
 
         try {
             const result = await serieService.saveSerie(serie);
-            res.send(result);
+            res.sendStatus(201);
         } catch (error) {
             res.status(500).send('Erreur lors de la sauvgarde d\'une série');
         }
@@ -32,7 +32,7 @@ export const SerieController = (app: Application) => {
 
         try {
             const result = await serieService.updateSerie(serie, serie.id);
-            res.send(result);
+            res.sendStatus(200);
         } catch (error) {
             res.status(500).send('Erreur lors de la mise à jour d\'une série');
         }

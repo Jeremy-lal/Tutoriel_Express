@@ -21,7 +21,7 @@ export const MovieController = (app: Application) => {
 
         try {
             const result = await movieService.saveMovie(movie);
-            res.send(result);
+            res.sendStatus(201);
         } catch (error) {
             res.status(500).send('Erreur lors de la sauvgarde d\'un film');
         }
@@ -32,7 +32,7 @@ export const MovieController = (app: Application) => {
 
         try {
             const result = await movieService.updateMovie(movie, movie.id);
-            res.send(result);
+            res.sendStatus(200);
         } catch (error) {
             res.status(500).send('Erreur lors de la mise à jour d\'un film');
         }
