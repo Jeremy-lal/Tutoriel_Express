@@ -2,10 +2,10 @@ import * as  connection from '../loaders/mysql';
 
 export class MovieRepository {
 
-    GET_ALL = 'SELECT * FROM movies;';
-    POST_MOVIE = 'INSERT INTO movies SET ?';
-    UPDATE_MOVIE = 'UPDATE movies SET ? WHERE id = ?';
-    DELETE_MOVIE = 'DELETE FROM movies WHERE id = ?';
+    GET_ALL = 'SELECT * FROM movie;';
+    POST_MOVIE = 'INSERT INTO movie SET ?';
+    UPDATE_MOVIE = 'UPDATE movie SET ? WHERE id = ?';
+    DELETE_MOVIE = 'DELETE FROM movie WHERE id = ?';
 
     constructor() { }
 
