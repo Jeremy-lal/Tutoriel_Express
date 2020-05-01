@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended: true }));
 
 
 app.get('/movies', (req, res) => {
-  connection.query('SELECT * from movies;', (err, results) => {
+  connection.query('SELECT * from movie;', (err, results) => {
     if (err) {
       res.status(500).send('Erreur lors de la récupération des films');
     } else {
@@ -22,7 +22,7 @@ app.get('/movies', (req, res) => {
 app.post('/movies', (req, res) => {
   const bodyData = req.body;
 
-  connection.query('INSERT INTO movies SET ?', bodyData, (err, results) => {
+  connection.query('INSERT INTO movie SET ?', bodyData, (err, results) => {
     if (err) {
       res.status(500).send("Erreur de sauvegarde de film");
     } else {
@@ -34,7 +34,7 @@ app.post('/movies', (req, res) => {
 app.post('/movies/category', (req, res) => {
   const {category, limit} = req.body;
 
-  connection.query('SELECT * FROM movies WHERE category = ? LIMIT ?', [category, limit], (err, results) => {
+  connection.query('SELECT * FROM movie WHERE category = ? LIMIT ?', [category, limit], (err, results) => {
     if (err) {
       res.status(500).send("Erreur lors de la récupération de film");
     } else {
