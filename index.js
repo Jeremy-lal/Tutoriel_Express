@@ -2,14 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3002;
-const series = require('../../Tutoriel_Express/routes/series');
-const films = require('../../Tutoriel_Express/routes/films');
+const series = require('./routes/series');
+const films = require('./routes/movie');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true }));
 
 app.use('/series', series);
-app.use('/films', films);
+app.use('/movies', films);
 
 
 app.listen(port, (err) => {

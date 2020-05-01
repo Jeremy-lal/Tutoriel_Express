@@ -13,22 +13,21 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const { category, limit } = req.body;
-
-    connection.query('SELECT * FROM series WHERE category = ? LIMIT ?', [category, limit], (err, results) => {
-        if (err) {
-            console.log(err);
-            res.status(500).send("Erreur lors de la récupération de serie");
-        } else {
-            res.send(results);
-        }
+    const bodyData = req.body;
+  
+    connection.query('INSERT INTO series SET ?', bodyData, (err, results) => {
+      if (err) {
+        res.status(500).send("Erreur de sauvegarde de serie");
+      } else {
+        res.sendStatus(201);
+      }
     });
-});
+  });
 
 router.put('/', (req, res) => {
     const bodyData = req.body;
 
-    connection.query('UPDATE series SET ? WHERE id = ?', [bodydata, bodydata.id], err => {
+    connection.query('UPDATE series SET ? WHERE id = ?', [bodyData, bodyData.id], err => {
         if (err) {
             res.status(500).send("Erreur de mise à jour d'une serie");
         } else {
