@@ -6,7 +6,7 @@ export class SshService {
     login = {
         host: 'localhost',
         username: 'user',
-        privateKey: require('fs').readFileSync('C:\\Users\\jlalait\\.ssh\\id_rsa', 'utf8'),
+        privateKey: require('fs').readFileSync('C:\\Users\\jeremy\\.ssh\\id_rsa', 'utf8'),
     }
 
     getLsResult() {
