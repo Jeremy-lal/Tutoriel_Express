@@ -16,15 +16,24 @@ export const PictureController = (app: Application) => {
 
     const pictureRouter: Router = express.Router();
 
-    pictureRouter.post('/', upload.single('picture'), (req: Request, res: Response, next: NextFunction) => {
+    pictureRouter.post('/one', upload.single('picture'), (req: Request, res: Response, next: NextFunction) => {
         const file = req.file;
         if (!file) {
-          const error = new Error('PLease upload a file');
-          return next(error);
+            const error = new Error('PLease upload a file');
+            return next(error);
         }
         res.send(file)
-      });
+    });
 
+    pictureRouter.post('/multiple', upload.array('myFiles', 12), (req, res, next) => {
+        const files = req.files
+        if (!files) {
+            const error = new Error('Please choose files')
+            return next(error)
+        }
+        res.send(files)
+    })
 
-      app.use('/file', pictureRouter);
+    app.use('/files', pictureRouter);
+
 };
