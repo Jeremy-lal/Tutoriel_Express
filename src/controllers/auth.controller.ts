@@ -8,7 +8,7 @@ export const AuthController = (app: Application) => {
     const log4jsService = new Log4jsService();
     const authRouter: Router = express.Router();
     const errorLogs = log4jsService.configureLog4js().getLogger('error');
-    const defaultLog = log4jsService.configureLog4js().getLogger();
+    const debugLog = log4jsService.configureLog4js().getLogger('debug');
 
 
     authRouter.post('/signup', async (req: Request, res: Response) => {
@@ -33,7 +33,7 @@ export const AuthController = (app: Application) => {
             res.set('JWT_TOKEN', token);
             res.send(user);
         } catch (error) {
-            defaultLog.debug(error);
+            debugLog.debug(error);
             res.status(400).send('L\'email ou le mot de passe est erroné');
         }
     });

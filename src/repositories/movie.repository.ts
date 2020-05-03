@@ -3,10 +3,10 @@ import { Movie } from './../models/movie';
 
 export class MovieRepository {
 
-    private GET_ALL = 'SELECT * FROM movies;';
-    private POST_MOVIE = 'INSERT INTO movies SET ?';
-    private UPDATE_MOVIE = 'UPDATE movies SET ? WHERE id = ?';
-    private DELETE_MOVIE = 'DELETE FROM movies WHERE id = ?';
+    private GET_ALL = 'SELECT * FROM movie;';
+    private POST_MOVIE = 'INSERT INTO movie SET ?';
+    private UPDATE_MOVIE = 'UPDATE movie SET ? WHERE id = ?';
+    private DELETE_MOVIE = 'DELETE FROM movie WHERE id = ?';
     private db: DbHandler;
 
     constructor() {
