@@ -1,4 +1,4 @@
-import { MovieService } from '../services/movies.service';
+import { MovieService } from '../services/movie.service';
 import express, { Application, Request, Response, Router } from 'express';
 
 export const MovieController = (app: Application) => {

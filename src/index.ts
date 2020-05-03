@@ -1,8 +1,10 @@
 import { AuthController } from './controllers/auth.controller';
-import { MovieController } from './controllers/movies.controller';
+import { MovieController } from './controllers/movie.controller';
 import { SerieController } from './controllers/series.controller';
 import express from 'express';
 import loaders from './loaders';
+import { UserController } from './controllers/user.controller';
+import { PictureController } from './controllers/file.controller';
 const port = 3002;
 
 async function startServer() {
@@ -13,6 +15,8 @@ async function startServer() {
   MovieController(app);
   SerieController(app);
   AuthController(app);
+  UserController(app);
+  PictureController(app);
 
 
   app.listen(port, (err: Error) => {

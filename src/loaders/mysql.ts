@@ -5,10 +5,10 @@ export default async () => {
 
 
     const connexion = mysql.createConnection({
-        host: 'localhost', // adresse du serveur
-        user: 'user', // nom d'utilisateur
-        password: 'pwd', // mot de passe
-        database: 'bdd1', // nom de la bdd
+        host: process.env.host, // adresse du serveur
+        user: process.env.user_mysql, // nom d'utilisateur
+        password: process.env.pwd_mysql, // mot de passe
+        database: 'tutoexpress', // nom de la bdd
     });
 
     DbHandler.getInstance(connexion);
